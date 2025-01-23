@@ -1,0 +1,315 @@
+:root {
+    --primary-color: #6366f1;
+    --secondary-color: #4338ca;
+    --accent-color: #06b6d4;
+    --text-color: #e2e8f0;
+    --bg-color: #0f172a;
+    --card-bg: #1e293b;
+    --gradient: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    --nav-height: 70px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    overflow-x: hidden;
+}
+
+.glass-effect {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--nav-height);
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 3rem;
+}
+
+nav a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 500;
+    position: relative;
+    padding: 0.5rem 1rem;
+    transition: color 0.3s ease;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background: var(--gradient);
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+header {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding-top: var(--nav-height);
+    text-align: center; /* Asegura que el texto esté centrado */
+}
+
+
+header::before {
+    content: '';
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    background: var(--gradient);
+    animation: rotate 15s linear infinite;
+    z-index: -1;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.header-content {
+    text-align: center;
+    padding: 2rem;
+    background: rgba(15, 23, 42, 0.8);
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.profile-img {
+    width: 200px; /* Tamaño del contenedor */
+    height: 200px;
+    border-radius: 50%; /* Hace que el contenedor sea circular */
+    background: var(--gradient); /* Aplica el gradiente al contenedor */
+    padding: 8px; /* Espesor del borde */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto; /* Centra el contenedor */
+    border-image:var(--gradient)1;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+section {
+    padding: 6rem 2rem;
+    position: relative;
+}
+
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#sobre-mi {
+    padding: 92px 32px 0px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra el contenido dentro de la sección */
+    justify-content: center; /* Asegura que el contenido esté centrado verticalmente */
+}
+
+#sobre-mi .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra el contenido dentro del contenedor */
+    text-align: center; /* Asegura que los textos dentro del contenedor estén centrados */
+}
+
+#sobre-mi .cvButton {
+    display: flex;
+    justify-content: center; /* Centra el botón horizontalmente */
+    width: 100%;
+}
+
+
+.btn-download {
+    display: inline-block;
+    background: var(--gradient);
+    color: white;
+    padding: 0.8rem 2rem; /* Ajusta el tamaño del botón */
+    border-radius: 30px; /* Bordes más redondeados */
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: none; /* Elimina subrayado */
+    transition: background 0.3s ease, transform 0.3s ease;
+    text-align: center;
+    margin-top: 1.5rem; /* Espaciado superior */
+}
+
+.btn-download:hover {
+    background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+    transform: scale(1.05); /* Pequeño efecto de zoom al pasar el mouse */
+}
+
+#proyectos{
+    padding: 92px 32px 0px 32px;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.project-card {
+    padding: 1.5rem;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+}
+
+#habilidades{
+    padding: 92px 32px 0px 32px;
+}
+
+.skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2rem;
+    justify-content: center; /* Centra los elementos horizontalmente */
+    align-items: center; /* Centra los elementos verticalmente */
+    max-width: 800px; /* Limita el ancho para mejor presentación */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.skill-tag {
+    background: var(--gradient);
+    color: white;
+    padding: 1rem; /* Incrementa el espacio para mayor uniformidad */
+    border-radius: 20px;
+    font-size: 0.9rem;
+    transition: transform 0.3s ease;
+    text-align: center; /* Centra el texto dentro de cada etiqueta */
+    display: flex;
+    flex-direction: column; /* Alinea icono y texto verticalmente */
+    align-items: center; /* Centra contenido horizontalmente */
+    width: 120px; /* Define un ancho uniforme */
+    height: 120px; /* Define un alto uniforme */
+}
+
+.skill-tag img {
+    width: 50px; /* Tamaño uniforme para los iconos */
+    height: 50px; /* Tamaño uniforme para los iconos */
+    margin-bottom: 0.5rem; /* Espaciado entre el icono y el texto */
+}
+
+.skill-tag:hover {
+    transform: scale(1.1);
+}
+
+#contacto{
+    /*padding: 92px 32px 0px 92px;*/
+    padding: 92px 32px;
+    align-items: center; /* Centra el contenido */
+    justify-content: center;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.social-links a {
+    color: var(--text-color);
+    font-size: 2rem;
+    transition: transform 0.3s ease;
+}
+
+.social-links a:hover {
+    transform: scale(1.2);
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+@media (max-width: 768px) {
+    nav ul {
+        gap: 1.5rem;
+    }
+
+    nav {
+        padding: 0 1rem;
+    }
+
+    nav a {
+        font-size: 0.9rem;
+        padding: 0.5rem;
+    }
+
+    .header-content {
+        width: 90%;
+    }
+}
